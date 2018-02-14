@@ -127,6 +127,7 @@ class Network(Configurable):
       config_proto.gpu_options.allow_growth = True
     else:
       config_proto.gpu_options.per_process_gpu_memory_fraction = self.per_process_gpu_memory_fraction
+      config_proto.gpu_options.allow_growth = True
     with tf.Session(config=config_proto) as sess:
       sess.run(tf.global_variables_initializer())
       if load:
@@ -238,6 +239,7 @@ class Network(Configurable):
       config_proto.gpu_options.allow_growth = True
     else:
       config_proto.gpu_options.per_process_gpu_memory_fraction = self.per_process_gpu_memory_fraction
+      config_proto.gpu_options.allow_growth = True
     with tf.Session(config=config_proto) as sess:
       for var in self.non_save_vars:
         sess.run(var.initializer)
